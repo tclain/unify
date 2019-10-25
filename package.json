@@ -1,0 +1,39 @@
+{
+  "name": "unify",
+  "version": "0.0.1",
+  "description": "a scalable yet simple backend for apis",
+  "private": true,
+  "main": "src/index.ts",
+  "scripts": {
+    "test": "jest --runInBand",
+    "tuw": "jest --watch",
+    "start": "npm run start:ts",
+    "start:ts": "ts-node -r tsconfig-paths/register ./src",
+    "start:dev": "nodemon"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/express": "^4.17.1",
+    "@types/jest": "^24.0.19",
+    "@types/node": "^12.11.7",
+    "@types/winston": "^2.4.4",
+    "jest": "^24.9.0",
+    "nodemon": "^1.19.4",
+    "ts-jest": "^24.1.0",
+    "typescript": "^3.6.4"
+  },
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "cookie-parser": "^1.4.4",
+    "cookies-parser": "^1.2.0",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "passport": "^0.4.0",
+    "passport-jwt": "^4.0.0",
+    "ts-node": "^8.4.1",
+    "tsconfig-paths": "^3.9.0",
+    "winston": "^3.2.1"
+  }
+}
