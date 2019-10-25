@@ -4,6 +4,8 @@
     "module": "commonjs",
     "target": "es2018",
     "baseUrl": ".",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
     "paths": {
       "@unify/*": ["./unify/*"]
     }

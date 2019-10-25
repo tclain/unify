@@ -3,12 +3,14 @@ import * as Express from "express";
 import { json } from "body-parser";
 import { configureErrorHandlers } from "@unify/errors";
 import { configureLogging } from "@unify/logs";
+import { Connection } from "typeorm";
 
 export interface App {}
 
 export type AppConfigurator = (app: Express.Application) => void;
 
 export interface IAppOptions {
+  database: Connection;
   middlewares?: Express.Handler[];
   handlers?: Array<(app: Express.Express) => void>;
   modules?: {
@@ -26,12 +28,15 @@ const baseModules: IAppOptions["modules"] = {
  * create server side app with all sensible defaults sets
  * @param options
  */
-export const createApp = ({
-  middlewares = [],
-  modules = {},
-  handlers = []
-}: IAppOptions = {}): Express.Application => {
+export const createApp = (
+  { middlewares = [], modules = {}, handlers = [], database }: IAppOptions = {
+    database: null
+  }
+): Express.Application => {
   config();
+
+  if (!database)
+    throw new Error("IMpossible to reach database, no connection is defined");
   const app = Express();
 
   // common middlewares
