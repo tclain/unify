@@ -4,7 +4,6 @@ import { UnifyRes } from "@unify/utils/requestHandlers";
 import { UnifyRequestHandler } from "@unify/utils/requestHandlers";
 
 export const handleError = (res: UnifyRes, e: Error) => {
-  console.error("error", e);
   return unexpectedError(res);
 };
 
