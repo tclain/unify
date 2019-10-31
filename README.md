@@ -27,6 +27,12 @@ create a ormconfig.json in the root of your project following the typeorm docume
 
 ```
 
+- alias typeorm to support typescript as an npm scripts:
+
+```
+typeorm: 'ts-node -r tsconfig-paths/register ./node_modules/typeorm/cli.js'
+```
+
 - create an app following this minimal example (in `src/index.ts`)
 
 ```ts
@@ -48,7 +54,8 @@ createConnection().then(database => {
 run the initial migration using the typeorm:
 
 ```
-ts-node -r tsconfig-paths/register ./node_modules/typeorm/cli.js entity:sync
+ yarn typeorm migration:generate -n init
+ yarn typeorm migration:run
 ```
 
 run your app:
@@ -62,3 +69,9 @@ You are all set !!
 ## Migrations
 
 all the typeorm commands are supported out of the box
+
+so each time you edit your models (or update unify), just run again:
+
+```
+ yarn typeorm migration:generate -n removeExample
+```
